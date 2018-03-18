@@ -124,9 +124,9 @@ The code should also be capable of being built using the Arduino IDE
 
 * **Chris Claxton** - [chrisckc](https://github.com/chrisckc)
 
-## License
+## Licence
 
-This project is licensed under the GNU GPLv3 License - see the [LICENCE.md](LICENCE.md) file for details.
+This project is licensed under the GNU GPLv3 Licence - see the [LICENCE.md](LICENCE.md) file for details.
 
 ## Acknowledgements
 
