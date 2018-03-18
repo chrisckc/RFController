@@ -20,7 +20,7 @@ Another downside of using RFLINK is that it only runs on an Arduino Mega (ATmega
 
 ## Prerequisites
 
-### Hardware
+#### Hardware
 
 The hardware was built using an Arduino Nano clone, an RXB6 receiver and an XD-FST FS1000A Transmitter
 The following wiring can be used:
@@ -34,7 +34,7 @@ FS1000A pin 2 (vcc) -> Arduino Nano vcc pin
 Note: The FS1000A can be supplied with 12V for increased Tx power.
 If using an alternative transmitter that requires exactly 5V and is sensitive to it's supply voltage it is important that you connect the transmitter's Vcc pin to the Arduino Vcc pin rather than using a data pin set to high as suggested in RFLINK documentation as there will be a slight voltage drop via the data pin.
 
-### Software
+#### Software
 
 The following software was used on a Mac running OSX Sierra
 
@@ -43,7 +43,7 @@ The following software was used on a Mac running OSX Sierra
 * [Arduino Extension](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino/)
 * [C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-### Required Arduino / C / C++ Libraries
+#### Required Arduino / C / C++ Libraries
 
 Arduino Supply Voltage Library:
 https://github.com/Yveaux/Arduino_Vcc
@@ -100,12 +100,12 @@ Each pulsetrainStruct has a member variable "key" which is a 5 character code to
 To replay the pulse trains, just type the key (case sensitive) into the serial console followed by the enter key.
 When a pulse train is detected it is matched against the stored pulse trains and the key is outputted to the serial terminal.
 
-##Notes
+## Notes
 I have deliberately left behind commented out code to show debug functions, alternative methods and remind myself what i have previously used for any future improvements.
 
 The pulse trains that I have captured and placed in the ProgMemGlobals.cpp have been modified from their original form for security reasons. The number of pulse trains that can be stored is limited by the available Flash storage, the length of any single pulse train is limited by the available SRAM, the maximum with the ATmega328p's 2K of SRAM is about 160 pulses. The length restriction on SRAM can be removed with further optimisations as commented in TODO items, however I have not yet found a device which uses more than 156 pulses, most use around 50.
 
-##Security
+## Security
 The security of the 433MHz devices that I have used with this code is virtually non existent, there is only the element of proximity to prevent someone else from controlling your devices. Due to the short range of the signals and likelihood of someone with technical skills wanting to stand outside and sniff the signals to gain control of few lamps connected to wireless switches, it's not really a huge issue. I would certainly not use these unsecured 433MHz devices for any physical safety or security related functions such as heating, alarm control or security sensors etc. The main issue with any wireless device, secured or not, is signal jamming rendering them useless.
 
 
