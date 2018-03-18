@@ -4,7 +4,7 @@
 
 This project was written as part of a Home Automation project. The project allows an Arduino to be used as an RF Scanner and Transmitter when used with 433Mhz RF modules.
 
-The purpose of the project is to control cheap wireless receiver devices such as main switching socket adapters, light switches and doorbells etc. Signals from transmitting devices such as doorbell buttons, security sensors etc. can also be monitored.
+The purpose of the project is to control cheap wireless receiver devices such as mains switching socket adapters, light switches and doorbells etc. Signals from transmitting devices such as doorbell buttons, security sensors etc. can also be monitored.
 
 Commands can be sent to the serial port to replay previously captured pulse trains for controlling each device.
 Commands are outputted on the serial port when the hard-coded pulse trains are detected.
