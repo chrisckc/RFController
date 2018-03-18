@@ -37,7 +37,7 @@ If using an alternative transmitter that requires exactly 5V and is sensitive to
 
 #### Software
 
-The following software was used on a Mac running OSX Sierra
+The following software was used on a Mac running OSX High Sierra
 
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software/)
 * [Visual Studio Code](https://code.visualstudio.com/)
