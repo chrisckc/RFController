@@ -6,8 +6,8 @@ This project was written as part of a Home Automation project. The project allow
 
 The purpose of the project is to control cheap wireless receiver devices such as mains switching socket adapters, light switches and doorbells etc. Signals from transmitting devices such as doorbell buttons and sensors etc. can also be monitored.
 
-Commands can be sent to the serial port to replay previously captured pulse trains for controlling each device.
-Commands are outputted on the serial port when the hard-coded pulse trains are detected.
+Commands can be sent to the serial port to replay previously captured and stored pulse trains for controlling each device.
+Commands are outputted on the serial port when pulse trains are received and matched against any stored pulse trains.
 This allows a device such as a Raspberry Pi to be connected to provide a web interface using NodeRed for example.
 
 ## Why
@@ -22,14 +22,15 @@ Another downside of using RFLINK is that it only runs on an Arduino Mega (ATmega
 
 #### Hardware
 
-The hardware was built using an Arduino Nano clone, an RXB6 receiver and an XD-FST FS1000A Transmitter
+The hardware was built using an Arduino Nano clone, an RXB6 receiver and an XD-FST FS1000A Transmitter.
+
 The following wiring can be used:
 http://www.rflink.nl/blog2/wiring
 
 With the following changes:
-RXB6 pin 7 (data) -> Arduino Nano pin 3 and pin 4
-FS1000A pin 3 (data) -> Arduino Nano pin 4
-FS1000A pin 2 (vcc) -> Arduino Nano vcc pin
+  * RXB6 pin 7 (data) -> Arduino Nano pin 3 and pin 4
+  * FS1000A pin 3 (data) -> Arduino Nano pin 4
+  * FS1000A pin 2 (vcc) -> Arduino Nano vcc pin
 
 Note: The FS1000A can be supplied with 12V for increased Tx power.
 If using an alternative transmitter that requires exactly 5V and is sensitive to it's supply voltage it is important that you connect the transmitter's Vcc pin to the Arduino Vcc pin rather than using a data pin set to high as suggested in RFLINK documentation as there will be a slight voltage drop via the data pin.
@@ -82,16 +83,16 @@ Note: Devices that use rolling codes cannot be controlled with this software, ho
 ## Capturing Pulse Trains
 
 To capture unknown pulse trains, uncomment the '#define DEBUG' line inside RFController.ino.
-With the project running on your Arduino, activate the controller for the wireless device within range of the receiver module and you should see a stream of positive and negative numbers appear on the serial console (be sure to use 115200 baud)
-Copy and paste the number stream into your favourite text editor and look for patterns.
+With the project running on your Arduino, activate the controller for the wireless device within range of the receiver module and you should see a stream of positive and negative numbers appear on the serial console (be sure to use 115200 baud), copy and paste the number stream into your favourite text editor and look for patterns.
 
 Here is a typical pulse train pattern: (pulse lengths are in microseconds, negative values are low pulses)
+```
 -6674,229,-605,228,-607,227,-608,226,-608,637,-199,224,-611,635,-199,633,-202,611,-614,220,-614,632,-203,631,-205,217,-617,218,-617,218,-617,217,-617,218,-217,628,-206,627,-209,214,-619,627,-208,627,-209,624,-211,213,-618,213,-32767
-
-You will find the same pattern repeated multiple times, separated by a low pulse of anything between around 5000 microseconds to 20,000 microseconds. In the above pattern the separator is -6674. The end of the transmission is marked by a longer low pulse which represents the the radio silence that exists while the receiver increases it automatic gain control, after which point a lot of noise is detected.
+```
+You will find the same pulse train pattern repeated multiple times, separated by a low pulse of anything between around 5000 microseconds to 20,000 microseconds. In the above pattern the separator was -6674, just pick out a single pulse train starting with the seperator. The end of the transmission is marked by a longer low pulse which represents the radio silence that exists while the receiver increases it automatic gain control, after which point a lot of noise is detected.
 
 Notice it ends with -32767, this is a long period of radio silence, longer than the maximum period that can be timed in microseconds with a 16bit signed number so it has been capped at 16bit INT_MAX. 
-The Receiver class contains logic to detect possible transmissions by looking for periods of radio silence, otherwise it would just continuously output random noise.
+The Receiver class contains logic to detect possible transmissions by looking for periods of radio silence. Without this it would just waste CPU cycles in matching pulse trains and continuously output random noise induced pulse trains in debug mode.
 
 Once you have extracted a single pulse train which will look similar to the above example (may contain more or less pulses) it needs to be entered into the ProgMemGlobals.cpp file as an array. 
 Each set of pulse trains then need to be made into a set of pulsetrainStruct's to be stored in the pulse trainArray variable.
