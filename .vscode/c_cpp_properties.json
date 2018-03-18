@@ -1,0 +1,49 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceRoot}",
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino",
+                "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/avr/include",
+                "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/avr/include/avr",
+                "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/4.9.2/include",
+                "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/4.9.2/include-fixed",
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/variants/standard",
+                "~/Documents/Arduino/libraries",
+                "~/Documents/Arduino/libraries/AvrSTL",
+                "~/Documents/Arduino/libraries/MemoryInfo",
+                "~/Documents/Arduino/libraries/Streaming",
+                "~/Documents/Arduino/libraries/SerialHelper",
+                "~/Documents/Arduino/libraries/Arduino_Vcc"
+            ],
+            "defines": [
+                "UBRRH",
+                "__AVR__",
+                "__AVR_ATmega328P__",
+                "__STL_HAS_NAMESPACES",
+                "__STL_USE_NEW_IOSTREAMS"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "${workspaceRoot}",
+                    "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino",
+                    "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/avr/include",
+                    "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/avr/include/avr",
+                    "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/4.9.2/include",
+                    "/Applications/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/4.9.2/include-fixed",
+                    "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/variants/standard",
+                    "~/Documents/Arduino/libraries",
+                    "~/Documents/Arduino/libraries/AvrSTL",
+                    "~/Documents/Arduino/libraries/MemoryInfo",
+                    "~/Documents/Arduino/libraries/Streaming",
+                    "~/Documents/Arduino/libraries/SerialHelper",
+                    "~/Documents/Arduino/libraries/Arduino_Vcc"
+                ]
+            },
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 3
+}

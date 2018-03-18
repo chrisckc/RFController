@@ -1,0 +1,20 @@
+General Notes:
+
+Paths to teensy hardware libraries
+/Applications/Arduino.app/Contents/Java/hardware/teensy/avr/libraries
+/Applications/Arduino.app/Contents/Java/hardware/teensy/avr/cores/teensy
+
+
+To use on different hardware such as teensy, c_cpp_properties.json must be modified
+The includePaths and browse.path entries must be modified to suit the hardware.
+
+The defines in the c_cpp_properties.json file are required to make intellisense error detection work properly.
+Different hardware will require different entries which can be discovered by searching the avr libraries.
+
+"defines": [
+                "UBRRH", // required for Serial class
+                "__AVR__", // general Arduino definitions
+                "__AVR_ATmega328P__",  // hardware specific
+                "__STL_HAS_NAMESPACES",  // required for the AvrSTL library
+                "__STL_USE_NEW_IOSTREAMS"  // required for the AvrSTL library
+            ],
