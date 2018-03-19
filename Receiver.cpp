@@ -1,7 +1,7 @@
 /*
   File: Receiver.cpp
   Author: Chris Claxton 2018
-  Copyright (c) 2018 Chris Claxton subject to the GNU GPLv3 license
+  Copyright (c) 2018 Chris Claxton subject to the GNU GPLv3 licence
 */
 #include "Receiver.h"
 //#include <climits>

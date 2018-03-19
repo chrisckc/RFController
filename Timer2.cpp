@@ -1,7 +1,7 @@
 /*
   File: Timer2.cpp
   Author: Chris Claxton 2018
-  Copyright (c) 2018 Chris Claxton subject to the GNU GPLv3 license
+  Copyright (c) 2018 Chris Claxton subject to the GNU GPLv3 licence
 
   This class uses the Arduino Timer2 hardware to provide a timing function accurate to 0.5us
   (the Arduino micros() function is only accurate to to 4us)
